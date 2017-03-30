@@ -1,0 +1,19 @@
+Request Builder
+
+- RequestType (POST, GET, PUT, DELETE)
+- PathVariable
+- RequestParam
+
+Response Verification
+
+- HTTP Status (200, 404)
+- Json Variable / Body
+
+A może tak :
+- Zrobić początek
+- Zrobić koniec
+- Próbowac znaleść refaktoring a->b ?
+
+
+Reading
+- Remove Middle Man.

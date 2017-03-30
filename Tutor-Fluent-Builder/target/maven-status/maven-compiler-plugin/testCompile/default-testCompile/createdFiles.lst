@@ -1,0 +1,6 @@
+pl\refactoring\tutor\builder\rest\TestRequestOptions.class
+pl\refactoring\tutor\builder\book\controller\BookControllerTest.class
+pl\refactoring\tutor\builder\book\controller\BookControllerIT.class
+pl\refactoring\tutor\builder\rest\MockMvcRequestTest.class
+pl\refactoring\tutor\builder\rest\ResponseVerificationOptions.class
+pl\refactoring\tutor\builder\rest\UrlBuilder.class

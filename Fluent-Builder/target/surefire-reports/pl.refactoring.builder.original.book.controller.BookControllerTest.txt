@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.refactoring.builder.original.book.controller.BookControllerTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.462 sec - in pl.refactoring.builder.original.book.controller.BookControllerTest

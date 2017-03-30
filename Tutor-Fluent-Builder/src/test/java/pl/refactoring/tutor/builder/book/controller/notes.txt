@@ -1,0 +1,16 @@
+Request Builder
+
+- RequestType (POST, GET, PUT, DELETE)
+- PathVariable
+- RequestParam
+
+accept(MediaType.APPLICATION_JSON) i jeszcze cos dodatkowego (plain text)
+
+Response Verification
+
+- HTTP Status (200, 404)
+a) 201 - created
+b) 200 - OK
+b) 400 - validation failed -> not-created
+
+- Json Variable / Body

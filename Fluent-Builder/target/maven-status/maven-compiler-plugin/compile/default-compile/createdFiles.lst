@@ -1,0 +1,4 @@
+pl\refactoring\builder\original\book\controller\BookController.class
+pl\refactoring\builder\original\book\repository\BookRepository.class
+pl\refactoring\builder\original\book\BookApplication.class
+pl\refactoring\builder\original\book\model\Book.class
