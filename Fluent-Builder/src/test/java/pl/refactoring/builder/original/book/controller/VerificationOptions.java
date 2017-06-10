@@ -3,6 +3,7 @@ package pl.refactoring.builder.original.book.controller;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -24,5 +25,13 @@ public class VerificationOptions {
 
     VerificationOptions hasStatusOK() throws Exception {
         return andExpect(status().isOk());
+    }
+
+    VerificationOptions hasJson(String jsonKey, Object jsonValue) throws Exception {
+        return andExpect(jsonPath(jsonKey).value(jsonValue));
+    }
+
+    VerificationOptions hasArray(String jsonKey) throws Exception {
+        return andExpect(jsonPath(jsonKey).isArray());
     }
 }
