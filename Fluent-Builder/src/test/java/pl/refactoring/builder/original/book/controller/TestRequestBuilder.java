@@ -18,7 +18,10 @@ public class TestRequestBuilder {
 
     public TestRequestBuilder(MockMvc mvc, String urlTemplate, HttpMethod httpMethod) {
         this.mvc = mvc;
-        requestBuilder = MockMvcRequestBuilders.request(httpMethod, urlTemplate);
+
+        requestBuilder = MockMvcRequestBuilders.request(httpMethod, urlTemplate)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
     }
 
     public TestRequestBuilder withContent(Object content) throws JsonProcessingException {

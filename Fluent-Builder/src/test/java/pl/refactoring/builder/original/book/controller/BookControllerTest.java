@@ -49,8 +49,6 @@ public class BookControllerTest extends HttpMockControllerTest {
         // Given
         doPost("/book/")
                 .withContent(BOOK_1)
-                .withContentType(MediaType.APPLICATION_JSON)
-                .accepting(MediaType.APPLICATION_JSON)
                 .andVerify()
                 .hasStatusOK()
                 .hasJson("$.message", "Book created successfully");
@@ -70,7 +68,6 @@ public class BookControllerTest extends HttpMockControllerTest {
 
         // When / Then
         doGet("/book/" + BOOK_1.getIsbn())
-                .accepting(MediaType.APPLICATION_JSON)
                 .andVerify()
                 .hasStatusOK()
                 .hasJson("$.name", BOOK_1.getName())
@@ -103,7 +100,6 @@ public class BookControllerTest extends HttpMockControllerTest {
 
         // When
         doDelete("/book/" + BOOK_1.getIsbn())
-                .accepting(MediaType.APPLICATION_JSON)
                 .andVerify()
                 .hasStatusOK();
 
@@ -123,7 +119,6 @@ public class BookControllerTest extends HttpMockControllerTest {
         // When / Then
 
         doGet("/book/")
-                .accepting(MediaType.APPLICATION_JSON)
                 .andVerify()
                 .hasStatusOK()
 
