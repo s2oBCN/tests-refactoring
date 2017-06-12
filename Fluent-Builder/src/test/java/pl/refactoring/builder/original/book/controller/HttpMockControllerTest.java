@@ -4,6 +4,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 /**
@@ -14,6 +15,13 @@ public class HttpMockControllerTest {
 
     protected VerificationOptions doGet(String urlTemplate) throws Exception {
         ResultActions resultActions = mvc.perform(get(urlTemplate)
+                .accept(MediaType.APPLICATION_JSON));
+
+        return new VerificationOptions(resultActions);
+    }
+
+    protected VerificationOptions doDelete(String urlTemplate) throws Exception {
+        ResultActions resultActions = mvc.perform(delete(urlTemplate)
                 .accept(MediaType.APPLICATION_JSON));
 
         return new VerificationOptions(resultActions);

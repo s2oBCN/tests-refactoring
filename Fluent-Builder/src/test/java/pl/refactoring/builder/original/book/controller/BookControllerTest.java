@@ -16,7 +16,8 @@ import pl.refactoring.builder.original.book.repository.BookRepository;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -67,18 +68,16 @@ public class BookControllerTest extends HttpMockControllerTest {
 
     @Test
     public void shouldGetBookDetails() throws Exception {
-        //Create a new book using the BookRepository API
+        // Given
         bookRepository.save(BOOK_1);
 
-        //Now make a call to the API to get details of the book
-        String urlTemplate = "/book/" + BOOK_1.getIsbn();
-
-        doGet(urlTemplate)
+        // When / Then
+        doGet("/book/" + BOOK_1.getIsbn())
                 .hasStatusOK()
-                .andExpect(jsonPath("$.name").value(BOOK_1.getName()))
-                .andExpect(jsonPath("$.isbn").value(BOOK_1.getIsbn()))
-                .andExpect(jsonPath("$.author").value(BOOK_1.getAuthor()))
-                .andExpect(jsonPath("$.pages").value(BOOK_1.getPages()));
+                .hasJson("$.name", BOOK_1.getName())
+                .hasJson("$.isbn", BOOK_1.getIsbn())
+                .hasJson("$.author", BOOK_1.getAuthor())
+                .hasJson("$.pages", BOOK_1.getPages());
     }
 
     @Test
@@ -104,11 +103,10 @@ public class BookControllerTest extends HttpMockControllerTest {
         bookRepository.save(BOOK_1);
 
         // When
-        mvc.perform(delete("/book/" + BOOK_1.getIsbn())
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+        doDelete("/book/" + BOOK_1.getIsbn())
+                .hasStatusOK();
 
-        //Try to fetch from the DB directly
+        // Then
         Book bookFromDb = bookRepository.findByIsbn(BOOK_1.getIsbn());
 
         // Then
@@ -118,24 +116,26 @@ public class BookControllerTest extends HttpMockControllerTest {
 
     @Test
     public void testGetAllBooksApi() throws Exception{
-        // When
+        // Given
         bookRepository.save(BOOK_1);
         bookRepository.save(BOOK_2);
 
-        // Then
-        doGet("/book/").hasStatusOK()
+        // When / Then
+        doGet("/book/")
+                .hasStatusOK()
 
-                .andExpect(jsonPath("$.books").isArray())
+                .hasJsonArray("$.books")
 
-                .andExpect(jsonPath("$.books[0].name").value(BOOK_1.getName()))
-                .andExpect(jsonPath("$.books[0].isbn").value(BOOK_1.getIsbn()))
-                .andExpect(jsonPath("$.books[0].author").value(BOOK_1.getAuthor()))
-                .andExpect(jsonPath("$.books[0].pages").value(BOOK_1.getPages()))
+                .hasJson("$.books[0].name", BOOK_1.getName())
+                .hasJson("$.books[0].isbn", BOOK_1.getIsbn())
+                .hasJson("$.books[0].author", BOOK_1.getAuthor())
+                .hasJson("$.books[0].pages", BOOK_1.getPages())
 
-                .andExpect(jsonPath("$.books[1].name").value(BOOK_2.getName()))
-                .andExpect(jsonPath("$.books[1].isbn").value(BOOK_2.getIsbn()))
-                .andExpect(jsonPath("$.books[1].author").value(BOOK_2.getAuthor()))
-                .andExpect(jsonPath("$.books[1].pages").value(BOOK_2.getPages()));
+                .hasJson("$.books[1].name", BOOK_2.getName())
+                .hasJson("$.books[1].isbn", BOOK_2.getIsbn())
+                .hasJson("$.books[1].author", BOOK_2.getAuthor())
+                .hasJson("$.books[1].pages", BOOK_2.getPages());
 
     }
+
 }
