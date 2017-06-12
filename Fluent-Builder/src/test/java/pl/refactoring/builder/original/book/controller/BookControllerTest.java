@@ -70,6 +70,8 @@ public class BookControllerTest extends HttpMockControllerTest {
 
         // When / Then
         doGet("/book/" + BOOK_1.getIsbn())
+                .accepting(MediaType.APPLICATION_JSON)
+                .andVerify()
                 .hasStatusOK()
                 .hasJson("$.name", BOOK_1.getName())
                 .hasJson("$.isbn", BOOK_1.getIsbn())
@@ -101,9 +103,10 @@ public class BookControllerTest extends HttpMockControllerTest {
 
         // When
         doDelete("/book/" + BOOK_1.getIsbn())
+                .accepting(MediaType.APPLICATION_JSON)
+                .andVerify()
                 .hasStatusOK();
 
-        // Then
         Book bookFromDb = bookRepository.findByIsbn(BOOK_1.getIsbn());
 
         // Then
@@ -118,7 +121,10 @@ public class BookControllerTest extends HttpMockControllerTest {
         bookRepository.save(BOOK_2);
 
         // When / Then
+
         doGet("/book/")
+                .accepting(MediaType.APPLICATION_JSON)
+                .andVerify()
                 .hasStatusOK()
 
                 .hasJsonArray("$.books")
