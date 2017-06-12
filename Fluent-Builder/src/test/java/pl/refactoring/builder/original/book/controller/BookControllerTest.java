@@ -1,6 +1,5 @@
 package pl.refactoring.builder.original.book.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,6 @@ import pl.refactoring.builder.original.book.repository.BookRepository;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -41,9 +39,6 @@ public class BookControllerTest extends HttpMockControllerTest {
         bookRepository.clear();
     }
 
-    //Required to Generate JSON content from Java objects
-    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
     //Required to delete the data added for tests.
     //Directly invoke the APIs interacting with the DB
     @Autowired
@@ -52,18 +47,20 @@ public class BookControllerTest extends HttpMockControllerTest {
     @Test
     public void shouldCreateBook() throws Exception {
         // Given
-        mvc.perform(post("/book/")
-                .content(OBJECT_MAPPER.writeValueAsString(BOOK_1))
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("Book created successfully"));
+        doPost("/book/")
+                .withContent(BOOK_1)
+                .withContentType(MediaType.APPLICATION_JSON)
+                .accepting(MediaType.APPLICATION_JSON)
+                .andVerify()
+                .hasStatusOK()
+                .hasJson("$.message", "Book created successfully");
 
         // When
         Book bookFromDb = bookRepository.findByIsbn(BOOK_1.getIsbn());
 
         // Then
-        assertThat(bookFromDb).isEqualToComparingFieldByField(BOOK_1);
+        assertThat(bookFromDb)
+                .isEqualToComparingFieldByField(BOOK_1);
     }
 
     @Test
