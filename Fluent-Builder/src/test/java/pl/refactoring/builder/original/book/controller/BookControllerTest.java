@@ -110,7 +110,7 @@ public class BookControllerTest {
         requestBody.put("name", "Book2");
         requestBody.put("isbn", isbn);
         requestBody.put("author", "Author2");
-        requestBody.put("pages", 200);
+        requestBody.put("pages", 327);
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
 
@@ -123,10 +123,10 @@ public class BookControllerTest {
 
         //Fetching the Book details directly from the DB to verify the API succeeded in updating the book details
         Book bookFromDb = bookRepository.findByIsbn(isbn);
-        assertEquals(requestBody.get("name"), bookFromDb.getName());
-        assertEquals(requestBody.get("isbn"), bookFromDb.getIsbn());
-        assertEquals(requestBody.get("author"), bookFromDb.getAuthor());
-        assertTrue(Integer.parseInt(requestBody.get("pages").toString()) == bookFromDb.getPages());
+        assertEquals(bookFromDb.getName(), requestBody.get("name"));
+        assertEquals(bookFromDb.getIsbn(), requestBody.get("isbn"));
+        assertEquals(bookFromDb.getAuthor(), requestBody.get("author"));
+        assertTrue(bookFromDb.getPages() == Integer.parseInt(requestBody.get("pages").toString()));
     }
 
     @Test
