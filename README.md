@@ -17,13 +17,17 @@ We will change it into "What I can do to make my team's code better" by example 
 
 # What is the goal?
 
+## Before refactoring
+
 ![BookControllerTest - Before](https://github.com/wlodekkr/tests-refactoring/blob/master/Fluent-Builder-0-All-Details-Visible.jpg)
 
-![BookControllerTest - After](https://github.com/wlodekkr/tests-refactoring/blob/master/Fluent-Builder-3-Request.jpg)
+## After refactoring towards Fluent Builder design pattern.
 
-We will refactor it towards Fluent Builder design pattern.
+![BookControllerTest - After](https://github.com/wlodekkr/tests-refactoring/blob/master/Fluent-Builder-3-Request.jpg)
 
 ## Importing Code for the workshop
 
 Run IntelliJ. Free Community Edition is enough if you do not have a licence :-)
+
+Then import project as maven one (once you've installed maven).
 
