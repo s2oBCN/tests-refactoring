@@ -24,4 +24,8 @@ public class HttpMockControllerTest {
         return new TestRequestBuilder(mvc, urlTemplate, HttpMethod.POST);
     }
 
+    public TestRequestBuilder doPut(String urlTemplate) {
+        return new TestRequestBuilder(mvc, urlTemplate, HttpMethod.PUT);
+    }
+
 }

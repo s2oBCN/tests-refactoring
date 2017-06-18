@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -15,9 +14,6 @@ import pl.refactoring.builder.original.book.repository.BookRepository;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * 1. Initial CleanUp
@@ -81,15 +77,17 @@ public class BookControllerTest extends HttpMockControllerTest {
         // Given
         bookRepository.save(BOOK_1);
 
-        mvc.perform(put("/book/" + BOOK_1.getIsbn())
-                .content(OBJECT_MAPPER.writeValueAsString(BOOK_1_UPDATED))
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("Book Updated successfully"));
+        doPut("/book/" + BOOK_1.getIsbn())
+                .withContent(BOOK_1_UPDATED)
+                .andVerify()
+                .hasStatusOK()
+                .hasJson("$.message", "Book Updated successfully");
 
-        //Fetching the Book details directly from the DB to verify the API succeeded in updating the book details
+
+        // When
         Book bookFromDb = bookRepository.findByIsbn(BOOK_1.getIsbn());
+
+        // Then
         assertThat(bookFromDb).isEqualToComparingFieldByField(BOOK_1_UPDATED);
     }
 
