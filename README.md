@@ -19,11 +19,11 @@ We will change it into "What I can do to make my team's code better" by example 
 
 ## Before refactoring
 
-![BookControllerTest - Before](https://github.com/wlodekkr/tests-refactoring/blob/master/Fluent-Builder-0-All-Details-Visible.jpg)
+![BookControllerTest - Before](Fluent-Builder-0-All-Details-Visible.jpg)
 
 ## After refactoring towards Fluent Builder design pattern.
 
-![BookControllerTest - After](https://github.com/wlodekkr/tests-refactoring/blob/master/Fluent-Builder-3-Request.jpg)
+![BookControllerTest - After](Fluent-Builder-3-Request.jpg)
 
 ## Importing Code for the workshop
 
