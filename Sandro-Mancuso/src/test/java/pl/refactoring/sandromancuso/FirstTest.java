@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
  * Created by w.krakowski on 6/21/2017.
  */
 public class FirstTest {
-    public static final Board BOARD = new Board();
+    public final Board BOARD = new Board();
 
     @Test
     public void shouldHaveNoWinnerAtStart() throws Exception {
