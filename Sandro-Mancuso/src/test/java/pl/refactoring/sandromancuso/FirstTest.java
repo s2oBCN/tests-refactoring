@@ -29,6 +29,17 @@ public class FirstTest {
         board.getNextPlayer();
 
         assertEquals(board.getNextPlayer(), Player.X);
+    }
 
+    @Test
+    public void shouldAllowToPutX() throws Exception {
+        Board board = new Board();
+
+        assertEquals(board.getNextPlayer(), Player.X);
+
+        board.put(1,1);
+
+        assertEquals(board.getNextPlayer(), Player.Y);
+        assertNull(board.getWinner());
     }
 }

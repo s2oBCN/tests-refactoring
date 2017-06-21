@@ -5,16 +5,19 @@ package pl.refactoring.sandromansuso;
  */
 public class Board {
 
+    private Player currentPlayer = Player.X;
+
     public Player getWinner() {
         return null;
     }
 
     public void put(int i, int i1) {
+        currentPlayer = Player.Y;
 
     }
 
 
     public Player getNextPlayer() {
-        return Player.X;
+        return currentPlayer;
     }
 }
