@@ -11,7 +11,16 @@ public class Board {
 
 
     public Player getWinner() {
-        return count==5 ? Player.A:null;
+        return isWinner() ? Player.A:null;
+    }
+
+    private boolean isWinner() {
+        for(int i=0;i<3;i++) {
+            if(fields[0][i] != Player.A) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void put(int x, int y) {
