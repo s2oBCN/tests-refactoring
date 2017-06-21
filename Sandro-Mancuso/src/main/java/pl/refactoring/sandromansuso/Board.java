@@ -19,4 +19,8 @@ public class Board {
     public Player getNextPlayer() {
         return currentPlayer;
     }
+
+    public Player getOccupiedField(int x, int y) {
+        return Player.A;
+    }
 }
