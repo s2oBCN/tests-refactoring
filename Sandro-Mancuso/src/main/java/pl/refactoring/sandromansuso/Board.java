@@ -12,14 +12,10 @@ public class Board {
         return null;
     }
 
-    public void put(int i, int i1) {
-        fields[i][i1] = currentPlayer;
+    public void put(int x, int y) {
+        fields[x][y] = currentPlayer;
         currentPlayer = currentPlayer == Player.B ? Player.A : Player.B;
-
     }
-
-
-
 
     public Player getNextPlayer() {
         return currentPlayer;
