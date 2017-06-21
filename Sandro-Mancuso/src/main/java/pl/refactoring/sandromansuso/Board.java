@@ -7,8 +7,6 @@ public class Board {
     private Player currentPlayer = Player.A;
 
     private Player[][] fields = new Player[3][3];
-    private int count;
-
 
     public Player getWinner() {
         return playerHasRow(0, Player.A) ? Player.A:null;
@@ -24,8 +22,6 @@ public class Board {
     }
 
     public void put(int x, int y) {
-
-        count++;
         if(fields[x][y]!=null) {
             throw new RuntimeException();
         }
