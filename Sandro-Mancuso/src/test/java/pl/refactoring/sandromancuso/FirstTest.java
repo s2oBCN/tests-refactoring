@@ -12,34 +12,30 @@ import static org.junit.Assert.assertTrue;
  * Created by w.krakowski on 6/21/2017.
  */
 public class FirstTest {
+    public static final Board BOARD = new Board();
+
     @Test
     public void shouldHaveNoWinnerAtStart() throws Exception {
-        Board board = new Board();
-
-        Player winner = board.getWinner();
+        Player winner = BOARD.getWinner();
 
         assertNull(winner);
         assertTrue(true);
     }
 
     @Test
-    public void shouldAllowToStartWithX() throws Exception {
-        Board board = new Board();
+    public void shouldAllowToStartWithPlayerA() throws Exception {
+        BOARD.getNextPlayer();
 
-        board.getNextPlayer();
-
-        assertEquals(board.getNextPlayer(), Player.X);
+        assertEquals(BOARD.getNextPlayer(), Player.X);
     }
 
     @Test
     public void shouldAllowToPutX() throws Exception {
-        Board board = new Board();
+        assertEquals(BOARD.getNextPlayer(), Player.X);
 
-        assertEquals(board.getNextPlayer(), Player.X);
+        BOARD.put(1,1);
 
-        board.put(1,1);
-
-        assertEquals(board.getNextPlayer(), Player.Y);
-        assertNull(board.getWinner());
+        assertEquals(BOARD.getNextPlayer(), Player.Y);
+        assertNull(BOARD.getWinner());
     }
 }
