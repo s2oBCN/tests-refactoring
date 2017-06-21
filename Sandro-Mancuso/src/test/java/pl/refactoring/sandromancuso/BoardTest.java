@@ -22,48 +22,14 @@ public class BoardTest {
         assertTrue(true);
     }
 
-    @Test
-    public void shouldAllowToStartWithPlayerA() throws Exception {
-        BOARD.getNextPlayer();
-
-        assertEquals(BOARD.getNextPlayer(), Player.A);
-    }
-
-    @Test
-    public void shouldAllowToPutX() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
-
-        BOARD.put(1,1);
-
-        assertEquals(BOARD.getNextPlayer(), Player.B);
-        assertNull(BOARD.getWinner());
-    }
-
-    @Test
-    public void shouldAllowToPutYAfterPutX() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
-
-        BOARD.put(1,1);
-        assertEquals(BOARD.getNextPlayer(), Player.B);
-
-        BOARD.put(1,2);
-        assertEquals(BOARD.getNextPlayer(), Player.A);
-
-        assertNull(BOARD.getWinner());
-    }
-
     @Test(expected = RuntimeException.class)
     public void shouldFailOnPuttingOnOccupiedField() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
-
         BOARD.put(1,1);
         BOARD.put(1,1);
-
     }
 
     @Test
     public void shouldWinPlayerAOnRows() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
 
         BOARD.put(0,0);
         BOARD.put(1,0);
@@ -75,7 +41,6 @@ public class BoardTest {
 
     @Test
     public void shouldWinPlayerAOnThirdRow() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
 
         BOARD.put(2,0);
         BOARD.put(1,0);
@@ -87,7 +52,6 @@ public class BoardTest {
 
     @Test
     public void shouldWinPlayerAOnSecondRow() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
 
         BOARD.put(1,0);
         BOARD.put(0,0);

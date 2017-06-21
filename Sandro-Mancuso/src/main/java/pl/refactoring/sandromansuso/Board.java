@@ -29,8 +29,4 @@ public class Board {
         currentPlayer = currentPlayer == Player.B ? Player.A : Player.B;
     }
 
-    public Player getNextPlayer() {
-        return currentPlayer;
-    }
-
 }
