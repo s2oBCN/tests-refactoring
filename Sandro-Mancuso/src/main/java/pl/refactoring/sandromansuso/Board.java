@@ -13,6 +13,9 @@ public class Board {
     }
 
     public void put(int x, int y) {
+        if(fields[x][y]!=null) {
+            throw new RuntimeException();
+        }
         fields[x][y] = currentPlayer;
         currentPlayer = currentPlayer == Player.B ? Player.A : Player.B;
     }
