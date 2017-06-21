@@ -26,28 +26,28 @@ public class FirstTest {
     public void shouldAllowToStartWithPlayerA() throws Exception {
         BOARD.getNextPlayer();
 
-        assertEquals(BOARD.getNextPlayer(), Player.X);
+        assertEquals(BOARD.getNextPlayer(), Player.A);
     }
 
     @Test
     public void shouldAllowToPutX() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.X);
+        assertEquals(BOARD.getNextPlayer(), Player.A);
 
         BOARD.put(1,1);
 
-        assertEquals(BOARD.getNextPlayer(), Player.Y);
+        assertEquals(BOARD.getNextPlayer(), Player.B);
         assertNull(BOARD.getWinner());
     }
 
     @Test
     public void shouldAllowToPutYAfterPutX() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.X);
+        assertEquals(BOARD.getNextPlayer(), Player.A);
 
         BOARD.put(1,1);
-        assertEquals(BOARD.getNextPlayer(), Player.Y);
+        assertEquals(BOARD.getNextPlayer(), Player.B);
 
         BOARD.put(1,1);
-        assertEquals(BOARD.getNextPlayer(), Player.X);
+        assertEquals(BOARD.getNextPlayer(), Player.A);
 
         assertNull(BOARD.getWinner());
     }
