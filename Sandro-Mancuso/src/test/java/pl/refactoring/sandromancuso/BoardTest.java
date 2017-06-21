@@ -85,4 +85,28 @@ public class BoardTest {
         BOARD.put(0,2);
         assertEquals(Player.A, BOARD.getWinner());
             }
+
+    @Test
+    public void shouldWinPlayerAOnThirdRow() throws Exception {
+        assertEquals(BOARD.getNextPlayer(), Player.A);
+
+        BOARD.put(2,0);
+        BOARD.put(1,0);
+        BOARD.put(2,1);
+        BOARD.put(1,1);
+        BOARD.put(2,2);
+        assertEquals(Player.A, BOARD.getWinner());
+    }
+
+    @Test
+    public void shouldWinPlayerAOnSecondRow() throws Exception {
+        assertEquals(BOARD.getNextPlayer(), Player.A);
+
+        BOARD.put(1,0);
+        BOARD.put(0,0);
+        BOARD.put(1,1);
+        BOARD.put(0,1);
+        BOARD.put(1,2);
+        assertEquals(Player.A, BOARD.getWinner());
+    }
 }

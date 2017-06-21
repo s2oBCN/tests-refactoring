@@ -9,7 +9,7 @@ public class Board {
     private Player[][] fields = new Player[3][3];
 
     public Player getWinner() {
-        return playerHasRow(0, Player.A) ? Player.A:null;
+        return playerHasRow(0, Player.A) || playerHasRow(1, Player.A)|| playerHasRow(2, Player.A) ? Player.A:null;
     }
 
     private boolean playerHasRow(int row, Player player) {
