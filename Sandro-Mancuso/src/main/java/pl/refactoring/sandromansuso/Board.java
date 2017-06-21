@@ -6,6 +6,8 @@ package pl.refactoring.sandromansuso;
 public class Board {
     private Player currentPlayer = Player.A;
 
+    private Player[][] fields = new Player[3][3];
+
     public Player getWinner() {
         return null;
     }
