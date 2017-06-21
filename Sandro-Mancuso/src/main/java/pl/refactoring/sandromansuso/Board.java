@@ -11,10 +11,10 @@ public class Board {
 
 
     public Player getWinner() {
-        return isWinner(0, Player.A) ? Player.A:null;
+        return playerHasRow(0, Player.A) ? Player.A:null;
     }
 
-    private boolean isWinner(int row, Player player) {
+    private boolean playerHasRow(int row, Player player) {
         for(int i=0;i<3;i++) {
             if(fields[row][i] != player) {
                 return false;
