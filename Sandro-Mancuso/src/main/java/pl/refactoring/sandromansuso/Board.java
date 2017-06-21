@@ -13,9 +13,12 @@ public class Board {
     }
 
     public void put(int i, int i1) {
+        fields[i][i1] = currentPlayer;
         currentPlayer = currentPlayer == Player.B ? Player.A : Player.B;
 
     }
+
+
 
 
     public Player getNextPlayer() {
@@ -23,6 +26,6 @@ public class Board {
     }
 
     public Player getOccupiedField(int x, int y) {
-        return Player.A;
+        return fields[x][y];
     }
 }
