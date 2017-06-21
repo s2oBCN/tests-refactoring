@@ -4,6 +4,7 @@ import org.junit.Test;
 import pl.refactoring.sandromansuso.Board;
 import pl.refactoring.sandromansuso.Player;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -19,5 +20,15 @@ public class FirstTest {
 
         assertNull(winner);
         assertTrue(true);
+    }
+
+    @Test
+    public void shouldAllowToStartWithX() throws Exception {
+        Board board = new Board();
+
+        board.getNextPlayer();
+
+        assertEquals(board.getNextPlayer(), Player.X);
+
     }
 }

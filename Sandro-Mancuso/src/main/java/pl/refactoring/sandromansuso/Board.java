@@ -8,4 +8,13 @@ public class Board {
     public Player getWinner() {
         return null;
     }
+
+    public void put(int i, int i1) {
+
+    }
+
+
+    public Player getNextPlayer() {
+        return Player.X;
+    }
 }
