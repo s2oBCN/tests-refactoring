@@ -19,6 +19,7 @@
     <modules>
         <module>Fluent-Builder</module>
         <module>Tutor-Fluent-Builder</module>
+        <module>Sandro-Mancuso</module>
     </modules>
 
     <dependencies>
