@@ -2,7 +2,9 @@ package pl.refactoring.sandromancuso;
 
 import org.junit.Test;
 import pl.refactoring.sandromansuso.Board;
+import pl.refactoring.sandromansuso.Player;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -10,9 +12,12 @@ import static org.junit.Assert.assertTrue;
  */
 public class FirstTest {
     @Test
-    public void testBoardExist() throws Exception {
+    public void shouldHaveNoWinnerAtStart() throws Exception {
         Board board = new Board();
 
+        Player winner = board.getWinner();
+
+        assertNull(winner);
         assertTrue(true);
     }
 }
