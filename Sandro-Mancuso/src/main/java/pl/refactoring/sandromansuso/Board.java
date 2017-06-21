@@ -33,7 +33,4 @@ public class Board {
         return currentPlayer;
     }
 
-    public Player getOccupiedField(int x, int y) {
-        return fields[x][y];
-    }
 }

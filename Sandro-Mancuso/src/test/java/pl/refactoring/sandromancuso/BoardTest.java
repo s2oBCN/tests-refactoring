@@ -52,19 +52,6 @@ public class BoardTest {
         assertNull(BOARD.getWinner());
     }
 
-    @Test
-    public void shouldReturnOccupiedField() throws Exception {
-        assertEquals(BOARD.getNextPlayer(), Player.A);
-
-        BOARD.put(1,1);
-        assertEquals(BOARD.getNextPlayer(), Player.B);
-
-        Player field = BOARD.getOccupiedField(1,1);
-
-        assertEquals(Player.A, field);
-
-    }
-
     @Test(expected = RuntimeException.class)
     public void shouldFailOnPuttingOnOccupiedField() throws Exception {
         assertEquals(BOARD.getNextPlayer(), Player.A);
