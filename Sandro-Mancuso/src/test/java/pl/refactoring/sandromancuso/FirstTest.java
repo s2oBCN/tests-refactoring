@@ -38,4 +38,17 @@ public class FirstTest {
         assertEquals(BOARD.getNextPlayer(), Player.Y);
         assertNull(BOARD.getWinner());
     }
+
+    @Test
+    public void shouldAllowToPutYAfterPutX() throws Exception {
+        assertEquals(BOARD.getNextPlayer(), Player.X);
+
+        BOARD.put(1,1);
+        assertEquals(BOARD.getNextPlayer(), Player.Y);
+
+        BOARD.put(1,1);
+        assertEquals(BOARD.getNextPlayer(), Player.X);
+
+        assertNull(BOARD.getWinner());
+    }
 }

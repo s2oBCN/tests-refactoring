@@ -11,7 +11,7 @@ public class Board {
     }
 
     public void put(int i, int i1) {
-        currentPlayer = Player.Y;
+        currentPlayer = currentPlayer == Player.Y ? Player.X : Player.Y;
 
     }
 
